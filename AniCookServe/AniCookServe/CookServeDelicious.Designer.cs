@@ -1,6 +1,6 @@
 ﻿namespace AniCookServe
 {
-    partial class Form1
+    partial class CookServeDelicious
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,7 @@
             this.testLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.letterLabel = new System.Windows.Forms.Label();
+            this.CustomerLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // testLabel
@@ -61,16 +62,25 @@
             this.letterLabel.TabIndex = 2;
             this.letterLabel.Text = "label1";
             // 
-            // Form1
+            // CustomerLabel
+            // 
+            this.CustomerLabel.AutoSize = true;
+            this.CustomerLabel.Location = new System.Drawing.Point(13, 13);
+            this.CustomerLabel.Name = "CustomerLabel";
+            this.CustomerLabel.Size = new System.Drawing.Size(35, 13);
+            this.CustomerLabel.TabIndex = 3;
+            this.CustomerLabel.Text = "label1";
+            // 
+            // CookServeDelicious
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.CustomerLabel);
             this.Controls.Add(this.letterLabel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.testLabel);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "CookServeDelicious";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,6 +91,7 @@
         private System.Windows.Forms.Label testLabel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label letterLabel;
+        private System.Windows.Forms.Label CustomerLabel;
     }
 }
 
