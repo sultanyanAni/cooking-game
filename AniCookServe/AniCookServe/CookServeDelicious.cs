@@ -20,14 +20,13 @@ namespace AniCookServe
 
         void init()
         {
-            Dictionary<string, string> general = new Dictionary<string, string>();
+           // Dictionary<string, string> general = new Dictionary<string, string>();
             Dictionary<string, string> pizza = new Dictionary<string, string>();
             //Pizza Ingredients
             pizza.Add("Tomato Sauce", "T");
             pizza.Add("Olives", "O");
             pizza.Add("Pepperoni", "P");
 
-            //General Ingredients
             pizza.Add("Cheese", "C");
             pizza.Add("Alfredo", "A");
             pizza.Add("Chicken", "K");
@@ -36,7 +35,6 @@ namespace AniCookServe
             pizza.Add("Bacon", "B");
             pizza.Add("Barbeque", "B");
 
-            //creating a dictionary of ingrediencts so they can be stored with a corresponding letter index
             foods = new Dictionary<string, Food>();
             foods.Add("Pizza", new Food("Pizza", pizza));
 
@@ -45,6 +43,7 @@ namespace AniCookServe
 
 
             CustomerLabel.Text = Isaac.Name + " wants: " + Isaac.DesiredFood.PrintActiveValues();
+           
 
         }
 
@@ -56,10 +55,7 @@ namespace AniCookServe
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string test = ingredients.Keys.ElementAt(gen.Next(1, 8));
-            testLabel.Text = ingredients[test];
-            letterLabel.Text = test;
-
+        
 
         }
     }

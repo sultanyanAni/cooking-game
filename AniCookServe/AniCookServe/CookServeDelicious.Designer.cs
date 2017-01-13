@@ -28,58 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.testLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.letterLabel = new System.Windows.Forms.Label();
             this.CustomerLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // testLabel
-            // 
-            this.testLabel.AutoSize = true;
-            this.testLabel.Location = new System.Drawing.Point(107, 111);
-            this.testLabel.Name = "testLabel";
-            this.testLabel.Size = new System.Drawing.Size(35, 13);
-            this.testLabel.TabIndex = 0;
-            this.testLabel.Text = "label1";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(86, 150);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 61);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // letterLabel
-            // 
-            this.letterLabel.AutoSize = true;
-            this.letterLabel.Location = new System.Drawing.Point(66, 111);
-            this.letterLabel.Name = "letterLabel";
-            this.letterLabel.Size = new System.Drawing.Size(35, 13);
-            this.letterLabel.TabIndex = 2;
-            this.letterLabel.Text = "label1";
             // 
             // CustomerLabel
             // 
             this.CustomerLabel.AutoSize = true;
-            this.CustomerLabel.Location = new System.Drawing.Point(13, 13);
+            this.CustomerLabel.BackColor = System.Drawing.Color.NavajoWhite;
+            this.CustomerLabel.Font = new System.Drawing.Font("Segoe Print", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CustomerLabel.Location = new System.Drawing.Point(12, 352);
             this.CustomerLabel.Name = "CustomerLabel";
-            this.CustomerLabel.Size = new System.Drawing.Size(35, 13);
+            this.CustomerLabel.Size = new System.Drawing.Size(0, 42);
             this.CustomerLabel.TabIndex = 3;
-            this.CustomerLabel.Text = "label1";
             // 
             // CookServeDelicious
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(1176, 593);
             this.Controls.Add(this.CustomerLabel);
-            this.Controls.Add(this.letterLabel);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.testLabel);
             this.Name = "CookServeDelicious";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -87,10 +54,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label testLabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label letterLabel;
         private System.Windows.Forms.Label CustomerLabel;
     }
 }

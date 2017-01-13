@@ -21,11 +21,11 @@ namespace AniCookServe
 
         public void loadActiveIngredients()
         {
-            //NEED TO MAKE THIS UNIQUE RANDOM NUMBERS
+            UniqueRandomNumber uniqueNum = new UniqueRandomNumber(allIngredients.Count);
             int numOfToppings = Global.Random.Next(1, allIngredients.Count);
             for (int i = 0; i < numOfToppings; i++)
             {
-                int index = Global.Random.Next(0, allIngredients.Count);
+                int index = uniqueNum.Next(0, allIngredients.Count);
                 string key = allIngredients.Keys.ElementAt(index);
                 string value = allIngredients.Values.ElementAt(index);
                 activeIngredients.Add(key, value);
@@ -37,8 +37,25 @@ namespace AniCookServe
             string output = "";
             for (int i = 0; i < activeIngredients.Count; i++)
             {
+
                 output += activeIngredients.Keys.ElementAt(i) + ", ";
+
             }
+            output = output.Remove(output.Length - 2, 2);
+            bool nextLine = false;
+            for (int i = 1; i < output.Length; i++)
+            {
+                if(i % 50 == 0)
+                {
+                    nextLine = true;
+                }
+                if (nextLine && output[i] == ' ')
+                {
+                    output = output.Insert(i, "\n");
+                    nextLine = false;
+                }
+            }
+
             return output;
         }
 
