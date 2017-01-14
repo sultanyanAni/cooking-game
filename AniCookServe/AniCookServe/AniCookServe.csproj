@@ -54,12 +54,21 @@
     </Compile>
     <Compile Include="Customer.cs" />
     <Compile Include="Food.cs" />
+    <Compile Include="FoodKey.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FoodKey.Designer.cs">
+      <DependentUpon>FoodKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniqueRandomNumber.cs" />
     <EmbeddedResource Include="CookServeDelicious.resx">
       <DependentUpon>CookServeDelicious.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FoodKey.resx">
+      <DependentUpon>FoodKey.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

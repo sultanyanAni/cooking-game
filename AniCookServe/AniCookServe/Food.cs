@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AniCookServe
 {
-    class Food
+    public class Food
     {
         public string FoodName;
         public Dictionary<string, string> allIngredients = new Dictionary<string, string>();
@@ -58,6 +58,8 @@ namespace AniCookServe
 
             return output;
         }
+
+       
 
 
 
