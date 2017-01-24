@@ -22,6 +22,6 @@ namespace AniCookServe
             ingredientLabel.Text = ingredient;
         }
 
-
+       
     }
 }

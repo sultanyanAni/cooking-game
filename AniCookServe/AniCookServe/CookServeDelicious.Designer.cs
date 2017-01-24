@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CustomerLabel = new System.Windows.Forms.Label();
-            this.keyGuideLabel = new System.Windows.Forms.Label();
+            this.testLabel = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // CustomerLabel
@@ -43,23 +45,28 @@
             this.CustomerLabel.TabIndex = 3;
             this.CustomerLabel.Text = "ORDER GOES HERE";
             // 
-            // keyGuideLabel
+            // testLabel
             // 
-            this.keyGuideLabel.AutoSize = true;
-            this.keyGuideLabel.Location = new System.Drawing.Point(942, 13);
-            this.keyGuideLabel.Name = "keyGuideLabel";
-            this.keyGuideLabel.Size = new System.Drawing.Size(144, 13);
-            this.keyGuideLabel.TabIndex = 4;
-            this.keyGuideLabel.Text = "KEYS TO PRESS GO HERE";
+            this.testLabel.AutoSize = true;
+            this.testLabel.Location = new System.Drawing.Point(234, 214);
+            this.testLabel.Name = "testLabel";
+            this.testLabel.Size = new System.Drawing.Size(0, 13);
+            this.testLabel.TabIndex = 4;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // CookServeDelicious
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 593);
-            this.Controls.Add(this.keyGuideLabel);
+            this.Controls.Add(this.testLabel);
             this.Controls.Add(this.CustomerLabel);
             this.Name = "CookServeDelicious";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CookServeDelicious_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -67,7 +74,8 @@
 
         #endregion
         private System.Windows.Forms.Label CustomerLabel;
-        private System.Windows.Forms.Label keyGuideLabel;
+        private System.Windows.Forms.Label testLabel;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
