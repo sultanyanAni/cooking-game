@@ -65,7 +65,9 @@
             this.ClientSize = new System.Drawing.Size(1176, 593);
             this.Controls.Add(this.testLabel);
             this.Controls.Add(this.CustomerLabel);
+            this.KeyPreview = true;
             this.Name = "CookServeDelicious";
+     
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CookServeDelicious_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
