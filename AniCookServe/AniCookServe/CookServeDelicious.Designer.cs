@@ -36,12 +36,11 @@
             // 
             // CustomerLabel
             // 
-            this.CustomerLabel.AutoSize = true;
             this.CustomerLabel.BackColor = System.Drawing.Color.NavajoWhite;
             this.CustomerLabel.Font = new System.Drawing.Font("Segoe Print", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CustomerLabel.Location = new System.Drawing.Point(12, 476);
             this.CustomerLabel.Name = "CustomerLabel";
-            this.CustomerLabel.Size = new System.Drawing.Size(266, 42);
+            this.CustomerLabel.Size = new System.Drawing.Size(901, 108);
             this.CustomerLabel.TabIndex = 3;
             this.CustomerLabel.Text = "ORDER GOES HERE";
             // 
@@ -67,7 +66,6 @@
             this.Controls.Add(this.CustomerLabel);
             this.KeyPreview = true;
             this.Name = "CookServeDelicious";
-     
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CookServeDelicious_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -45,7 +45,7 @@ namespace AniCookServe
             bool nextLine = false;
             for (int i = 1; i < output.Length; i++)
             {
-                if(i % 50 == 0)
+                if (i % 50 == 0)
                 {
                     nextLine = true;
                 }
@@ -59,7 +59,7 @@ namespace AniCookServe
             return output;
         }
 
-       
+
 
 
 

@@ -80,17 +80,53 @@ namespace AniCookServe
         {
             if (e.KeyCode == Keys.P)
             {
-                testLabel.Text = "pepperoni";
+                testLabel.Text = "Pepperoni";
             }
             else if (e.KeyCode == Keys.K)
             {
                 testLabel.Text = "Chicken";
+            }
+            else if(e.KeyCode == Keys.C)
+            {
+                testLabel.Text = "Cheese";
+            }
+            else if(e.KeyCode == Keys.M)
+            {
+                testLabel.Text = "Mushrooms";
+            }
+            else if(e.KeyCode == Keys.A)
+            {
+                testLabel.Text = "Alfredo";
+            }
+            else if(e.KeyCode == Keys.T)
+            {
+                testLabel.Text = "Tomato Sauce";
+            }
+            else if(e.KeyCode == Keys.O)
+            {
+                testLabel.Text = "Olives";
+            }
+            else if(e.KeyCode == Keys.J)
+            {
+                testLabel.Text = "Jalapenos";
+            }
+            else if(e.KeyCode == Keys.B)
+            {
+                testLabel.Text = "Bacon";
+            }
+            else if(e.KeyCode == Keys.Q)
+            {
+                testLabel.Text = "Barbeque";
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             CustomerLabel.Focus();
+            //erase
+
+            //draw
+
         }
     }
 }
