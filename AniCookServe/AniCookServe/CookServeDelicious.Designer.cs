@@ -32,6 +32,8 @@
             this.CustomerLabel = new System.Windows.Forms.Label();
             this.testLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.mainPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // CustomerLabel
@@ -57,16 +59,26 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // mainPictureBox
+            // 
+            this.mainPictureBox.Location = new System.Drawing.Point(1, 1);
+            this.mainPictureBox.Name = "mainPictureBox";
+            this.mainPictureBox.Size = new System.Drawing.Size(912, 472);
+            this.mainPictureBox.TabIndex = 5;
+            this.mainPictureBox.TabStop = false;
+            // 
             // CookServeDelicious
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 593);
+            this.Controls.Add(this.mainPictureBox);
             this.Controls.Add(this.testLabel);
             this.Controls.Add(this.CustomerLabel);
             this.KeyPreview = true;
             this.Name = "CookServeDelicious";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CookServeDelicious_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -76,6 +88,7 @@
         private System.Windows.Forms.Label CustomerLabel;
         private System.Windows.Forms.Label testLabel;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox mainPictureBox;
     }
 }
 

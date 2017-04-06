@@ -18,7 +18,7 @@ namespace AniCookServe
         }
 
         /// <summary>
-        /// Generates a unique random number; at most 10 values per instance, unless Reset is called.
+        /// Generates a unique random number
         /// </summary>
         /// <param name="minValue">The inclusive lower bound of the random number returned.</param>
         /// <param name="maxValue">The exclusive upper bound of the random number returned. Must be greater than or equal to minValue.</param>
@@ -39,7 +39,6 @@ namespace AniCookServe
                 isUnique = true;
                 val = random.Next(minValue, maxValue);
 
-                //Example of Contains implementation
                 for (int j = 0; j < usedNumbers.Count; j++)
                 {
                     if (usedNumbers[j] == val)

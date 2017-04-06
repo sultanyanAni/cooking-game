@@ -96,6 +96,39 @@
   <ItemGroup>
     <None Include="Resources\foodKeyBackground.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alfredoSauce.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bacon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bbqSauce.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cheese.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chicken.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jalapenos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mushroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\olives.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pepperoni.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pizzaDough.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tomatoSauce.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

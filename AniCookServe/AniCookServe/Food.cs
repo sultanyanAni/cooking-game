@@ -9,9 +9,18 @@ namespace AniCookServe
     public class Food
     {
         public string FoodName;
+
+        //all ingredients that can be used to create a specfic type of food
         public Dictionary<string, string> allIngredients = new Dictionary<string, string>();
+
+        //active ingredients that a customer wants on their food 
         public Dictionary<string, string> activeIngredients = new Dictionary<string, string>();
 
+        /// <summary>
+        /// Creates food that has a name and has its own set of ingredients. 
+        /// </summary>
+        /// <param name="name">name of the food</param>
+        /// <param name="ingredients">dictionary of ingredients that can be used to create food</param>
         public Food(string name, Dictionary<string, string> ingredients)
         {
 
@@ -19,6 +28,10 @@ namespace AniCookServe
             activeIngredients = new Dictionary<string, string>();
         }
 
+        /// <summary>
+        /// loads a random number of random toppings
+        /// (WILL BE REPLACED WITH RECIPES)
+        /// </summary>
         public void loadActiveIngredients()
         {
             UniqueRandomNumber uniqueNum = new UniqueRandomNumber(allIngredients.Count);
@@ -32,6 +45,11 @@ namespace AniCookServe
             }
         }
 
+        /// <summary>
+        /// Returns a string that prints out a list of randomly chosen ingredients.
+        /// (WILL PRINT OUT SPECIFIC RECIPES)
+        /// </summary>
+        /// <returns></returns>
         public string PrintActiveValues()
         {
             string output = "";
