@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,62 +9,97 @@ namespace AniCookServe
 {
     public class Food
     {
-        public string FoodName;
 
-        //all ingredients that can be used to create a specfic type of food
-        public Dictionary<string, string> allIngredients = new Dictionary<string, string>();
+        string[] recipes = File.ReadAllLines("Food.csv");
+        Dictionary<string, List<Recipe>> foods; 
+       // public string FoodName;
+ 
+        public Recipe ActiveRecipe;
 
-        //active ingredients that a customer wants on their food 
-        public Dictionary<string, string> activeIngredients = new Dictionary<string, string>();
+        string activeFood;
 
-        /// <summary>
-        /// Creates food that has a name and has its own set of ingredients. 
-        /// </summary>
-        /// <param name="name">name of the food</param>
-        /// <param name="ingredients">dictionary of ingredients that can be used to create food</param>
-        public Food(string name, Dictionary<string, string> ingredients)
+
+
+
+        public Food()
         {
+            foods = new Dictionary<string, List<Recipe>>();
+           // recipes = 
 
-            allIngredients = ingredients;
-            activeIngredients = new Dictionary<string, string>();
-        }
-
-        /// <summary>
-        /// loads a random number of random toppings
-        /// (WILL BE REPLACED WITH RECIPES)
-        /// </summary>
-        public void loadActiveIngredients()
-        {
-            UniqueRandomNumber uniqueNum = new UniqueRandomNumber(allIngredients.Count);
-            int numOfToppings = Global.Random.Next(1, allIngredients.Count);
-            for (int i = 0; i < numOfToppings; i++)
+            //loops through each recipe so it can be added to foods
+            for (int i = 1; i < recipes.Length; i++)
             {
-                int index = uniqueNum.Next(0, allIngredients.Count);
-                string key = allIngredients.Keys.ElementAt(index);
-                string value = allIngredients.Values.ElementAt(index);
-                activeIngredients.Add(key, value);
+                //the data from the text file is split at each comma
+                string[] data = recipes[i].Split(',');
+
+                //the first element in the data array is the name of the food 
+                string foodName = data[0];
+
+                //the second element in the data array is the name of the recipe
+                string recipeName = data[1];
+
+                //Do we already have this food?
+                //if we do not, it is added as a new food
+                if (!foods.ContainsKey(foodName))
+                {
+                    foods.Add(foodName, new List<Recipe>());
+                }
+
+                var currentRecipe = new Recipe() { Name = recipeName };
+
+                for(int j = 2; j < data.Length; j += 3)
+                {
+                    currentRecipe.Add(new Recipe.Ingredient() { Name = data[j], Key = (ConsoleKey)Enum.Parse(typeof(ConsoleKey), data[j + 1]), Image = data[j + 2] });
+                }
+
+                foods[foodName].Add(currentRecipe);
+
             }
         }
 
-        /// <summary>
-        /// Returns a string that prints out a list of randomly chosen ingredients.
-        /// (WILL PRINT OUT SPECIFIC RECIPES)
-        /// </summary>
-        /// <returns></returns>
-        public string PrintActiveValues()
+        public void selectFood(string foodName)
         {
+            activeFood = foodName;
+        }
+ 
+        //Selects a random recipe from a given food
+        private Recipe SelectRecipe(string foodName)
+        {
+            //loop through foods and save recipes associated with activeFood into an array
+           List<Recipe> activeFoodRecipes = new List<Recipe>(); 
+            for (int i = 0; i < foods.Count; i++)
+            {
+                if(foods.ContainsKey(foodName))
+                {
+                    for(int j = 0; j < foods[foodName].Count; j++)
+                    {
+                        activeFoodRecipes.Add(foods[foodName][j]);
+                    }
+                }
+            }
+
+            UniqueRandomNumber uniqueNum = new UniqueRandomNumber (activeFoodRecipes.Count);
+            int recipeIndex = uniqueNum.Next(0, activeFoodRecipes.Count);
+            ActiveRecipe = activeFoodRecipes[recipeIndex];
+            return ActiveRecipe;
+
+        }
+
+        public string PrintRecipe()
+        {
+            ActiveRecipe = SelectRecipe(activeFood);
             string output = "";
-            for (int i = 0; i < activeIngredients.Count; i++)
+            for (int i = 0; i < ActiveRecipe.Count; i++)
             {
 
-                output += activeIngredients.Keys.ElementAt(i) + ", ";
+                output += ActiveRecipe[i].Name + ", ";
 
             }
             output = output.Remove(output.Length - 2, 2);
             bool nextLine = false;
             for (int i = 1; i < output.Length; i++)
             {
-                if (i % 50 == 0)
+                if (i % 45 == 0)
                 {
                     nextLine = true;
                 }
@@ -76,10 +112,5 @@ namespace AniCookServe
 
             return output;
         }
-
-
-
-
-
     }
 }

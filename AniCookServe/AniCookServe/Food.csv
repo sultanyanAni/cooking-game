@@ -1,0 +1,9 @@
+﻿[foodName],[recipeName],[IngredientName],[IngredientKey],[IngredientImage],[IngredientName],[IngredientKey],[IngredientImage]
+Pizza,Mushroom,Tomato Sauce,T,tomatoSauce.png,Mushrooms,M,mushrooms.png,Pepperoni,P,pepperoni.png,Cheese,C,cheese.png
+Pizza,Jalapeno Bacon,Tomato Sauce,T,tomatoSauce.png,Jalapenos,J,jalapenos.png,Pepperoni,P,pepperoni.png,Cheese,C,cheese.png,Bacon,B,bacon.png
+Pizza,Chicken Alfredo, Alfredo Sauce, A, alfredoSauce.png, Cheese, C, cheese.png, Chicken, K, chicken.png
+Pizza, Pepperoni, Tomato Sauce, T, tomatoSauce.png, Cheese, C, cheese.png, Pepperoni, P, pepperoni.png
+Pizza, Barbeque Chicken, Barbeque Sauce, B, bbqSauce.png, Cheese, C, cheese.png, Chicken, K, chicken.png
+Pizza, Meaty, Tomato Sauce, T, tomatoSauce.png, Cheese, C, cheese.png, Pepperoni, P, pepperoni.png, Bacon, B, bacon.png, Chicken, K, chicken.png
+Pizza, Veggie, Tomato Sauce, T, tomatoSauce.png, Cheese, C, cheese.png, Mushrooms, M, mushrooms.png, Olives, O, olives.png, Jalapenos, J, jalapenos.png
+Pizza, Deluxe, Tomato Sauce, T, tomatoSauce.png, Cheese, C, cheese.png, Pepperoni, P, pepperoni.png, Bacon, B, bacon.png, Chicken, K, chicken.png, Mushrooms, M, mushrooms.png, Olives, O, olives.png, Jalapenos, J, jalapenos

@@ -18,7 +18,8 @@ namespace AniCookServe
         public Customer(Food food)
         {
             DesiredFood = food;
-            DesiredFood.loadActiveIngredients();
+            //DesiredFood.LoadActiveIngredients();
+            //DesiredFood.L
         }
 
     }
