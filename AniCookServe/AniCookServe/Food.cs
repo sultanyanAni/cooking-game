@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AniCookServe
 {
@@ -49,7 +50,7 @@ namespace AniCookServe
 
                 for(int j = 2; j < data.Length; j += 3)
                 {
-                    currentRecipe.Add(new Recipe.Ingredient() { Name = data[j], Key = (ConsoleKey)Enum.Parse(typeof(ConsoleKey), data[j + 1]), Image = data[j + 2] });
+                    currentRecipe.Add(new Recipe.Ingredient() { Name = data[j], Key = (Keys)Enum.Parse(typeof(Keys), data[j + 1]), Image = data[j + 2] });
                 }
 
                 foods[foodName].Add(currentRecipe);
@@ -60,6 +61,7 @@ namespace AniCookServe
         public void selectFood(string foodName)
         {
             activeFood = foodName;
+            ActiveRecipe = SelectRecipe(activeFood);
         }
  
         //Selects a random recipe from a given food
@@ -87,7 +89,7 @@ namespace AniCookServe
 
         public string PrintRecipe()
         {
-            ActiveRecipe = SelectRecipe(activeFood);
+            
             string output = "";
             for (int i = 0; i < ActiveRecipe.Count; i++)
             {

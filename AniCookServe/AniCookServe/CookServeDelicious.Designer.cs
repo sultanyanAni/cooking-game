@@ -77,6 +77,7 @@
             this.Controls.Add(this.CustomerLabel);
             this.KeyPreview = true;
             this.Name = "CookServeDelicious";
+            this.Load += new System.EventHandler(this.CookServeDelicious_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CookServeDelicious_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
             this.ResumeLayout(false);

@@ -15,7 +15,7 @@ namespace AniCookServe
         public struct Ingredient
         {
             public string Name { get; set; }
-            public ConsoleKey Key { get; set; }
+            public Keys Key { get; set; }
             public string Image { get; set; }
         }
 

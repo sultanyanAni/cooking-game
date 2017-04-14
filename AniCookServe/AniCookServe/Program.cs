@@ -16,7 +16,7 @@ namespace AniCookServe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CookServeDelicious());
+            Application.Run(new FoodMenu());
         }
     }
 }

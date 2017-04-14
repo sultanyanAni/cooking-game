@@ -16,18 +16,17 @@ namespace AniCookServe
         Random gen = new Random();
         Bitmap canvas;
         Graphics gfx;
-        Customer Isaac;
-
+        Queue<Customer> customers;
         Food food = new Food();
-
+        string activeFood;
         int x;
         int y;
-        int pizzaX;
-        int pizzaY;
+        int foodX;
+        int foodY;
 
-        Dictionary<string, string> ingredients = new Dictionary<string, string>();
-        Dictionary<string, bool> ingredientUsed;
-        Dictionary<string, Food> foods;
+        string foodImage;
+
+        
 
         /// <summary>
         /// creates and returns a new FoodKey and places it at a specified location
@@ -46,61 +45,21 @@ namespace AniCookServe
             return keyToCreate;
         }
 
+        //Customer newCustomer()
+        //{
+
+        //}
+       
         void init()
         {
-            food.selectFood("Pizza");
-            //var pizza = new Food("Pizza");
-            //pizza.CreateRecipe
-            //(
-            //    "Mushroom pizza",
-            //    new Ingredient("Tomato Sauce", Keys.T, Image.FromFile("")),
-            //    new Ingredient("Olives", Keys.O, Properties.Resources.ResourceManager.GetObject("") as Image)
-            //);
+            customers = new Queue<Customer>();
+            canvas = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
+            gfx = Graphics.FromImage(canvas);
 
-
-
-            //canvas = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
-            //gfx = Graphics.FromImage(canvas);
-
-            //x = ClientSize.Width - 230;
-            //y = 0;
-            //pizzaX = ClientSize.Width / 5;
-            //pizzaY = 40;
-
-            //ingredientUsed = new Dictionary<string, bool>();
-            //ingredientUsed.Add("Tomato Sauce", false);
-            //ingredientUsed.Add("Olives", false);
-            //ingredientUsed.Add("Pepperoni", false);
-
-            //ingredientUsed.Add("Cheese", false);
-            //ingredientUsed.Add("Alfredo", false);
-            //ingredientUsed.Add("Chicken", false);
-            //ingredientUsed.Add("Jalapenos", false);
-            //ingredientUsed.Add("Mushrooms", false);
-            //ingredientUsed.Add("Bacon", false);
-            //ingredientUsed.Add("Barbeque", false);
-
-            //// Dictionary<string, string> general = new Dictionary<string, string>();
-            //Dictionary<string, string> pizza = new Dictionary<string, string>();
-
-            ////Pizza Ingredients
-            //pizza.Add("Tomato Sauce", "T");
-            //pizza.Add("Olives", "O");
-            //pizza.Add("Pepperoni", "P");
-
-            //pizza.Add("Cheese", "C");
-            //pizza.Add("Alfredo", "A");
-            //pizza.Add("Chicken", "K");
-            //pizza.Add("Jalapenos", "J");
-            //pizza.Add("Mushrooms", "M");
-            //pizza.Add("Bacon", "B");
-            //pizza.Add("Barbeque", "Q");
-
-            //foods = new Dictionary<string, Food>();
-            //foods.Add("Pizza", new Food("Pizza", pizza));
-
-            //Isaac = new Customer(foods["Pizza"]);
-            //Isaac.Name = "Isaac";
+            x = ClientSize.Width - 230;
+            y = 0;
+            foodX = ClientSize.Width / 5;
+            foodY = 40;
 
             //for (int i = 0; i < pizza.Count; i++)
             //{
@@ -110,128 +69,46 @@ namespace AniCookServe
             //    y += newFoodKey.Height;
             //}
 
-             CustomerLabel.Text = "Customer wants: " + food.PrintRecipe();
-        }
 
-        public CookServeDelicious()
+        }
+        public CookServeDelicious(string foodName)
         {
             InitializeComponent();
             init();
             this.KeyDown += CookServeDelicious_KeyDown;
+            activeFood = foodName;
         }
-
-
-        bool sauceDrawn = false;
 
         private void CookServeDelicious_KeyDown(object sender, KeyEventArgs e)
         {
-            if (sauceDrawn == false)
+            foreach(var ingredient in food.ActiveRecipe)
             {
-                switch (e.KeyCode)
+                if (e.KeyCode == ingredient.Key)
                 {
-                    case Keys.A:
-                        testLabel.Text = "Alfredo";
-                        ingredientUsed["Alfredo"] = true;
-                        sauceDrawn = true;
-                        break;
-                    case Keys.T:
-                        testLabel.Text = "Tomato Sauce";
-                        ingredientUsed["Tomato Sauce"] = true;
-                        sauceDrawn = true;
-                        break;
-                    case Keys.Q:
-                        testLabel.Text = "Barbeque";
-                        ingredientUsed["Barbeque"] = true;
-                        sauceDrawn = true;
-                        break;
-                    default:
-                        testLabel.Text = "SAUCE FIRST";
-                        break;
+                    foodImage = ingredient.Image;
                 }
             }
-            else
-            {
-                switch (e.KeyCode)
-                {
-                    case Keys.P:
-                        testLabel.Text = "Pepperoni";
-                        ingredientUsed["Pepperoni"] = true;
-                        break;
-                    case Keys.K:
-                        testLabel.Text = "Chicken";
-                        ingredientUsed["Chicken"] = true;
-                        break;
-                    case Keys.C:
-                        testLabel.Text = "Cheese";
-                        ingredientUsed["Cheese"] = true;
-                        break;
-                    case Keys.M:
-                        testLabel.Text = "Mushrooms";
-                        ingredientUsed["Mushrooms"] = true;
-                        break;
-                    case Keys.O:
-                        testLabel.Text = "Olives";
-                        ingredientUsed["Olives"] = true;
-                        break;
-                    case Keys.J:
-                        testLabel.Text = "Jalapenos";
-                        ingredientUsed["Jalapenos"] = true;
-                        break;
-                    case Keys.B:
-                        testLabel.Text = "Bacon";
-                        ingredientUsed["Bacon"] = true;
-                        break;
-                }
-            }
+          
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //gfx.DrawImage(Properties.Resources.pizzaDough, new Point(pizzaX, pizzaY));
+            if (customers.Count < 5)
+            {
+                customers.Enqueue(new Customer(activeFood));
 
-            //if (ingredientUsed["Alfredo"] == true)
-            //{
-            //    gfx.DrawImage(Properties.Resources.alfredoSauce, new Point(pizzaX, pizzaY));
-            //}
-            //if (ingredientUsed["Tomato Sauce"] == true)
-            //{
-            //    gfx.DrawImage(Properties.Resources.tomatoSauce, new Point(pizzaX, pizzaY));
-            //}
-            //if (ingredientUsed["Barbeque"] == true)
-            //{
-            //    gfx.DrawImage(Properties.Resources.bbqSauce, new Point(pizzaX, pizzaY));
-            //}
-            //if (ingredientUsed["Cheese"] == true)
-            //{
-            //    gfx.DrawImage(Properties.Resources.cheese, new Point(pizzaX, pizzaY));
-            //}
-            //if (ingredientUsed["Bacon"] == true)
-            //{
-            //    gfx.DrawImage(Properties.Resources.bacon, new Point(pizzaX, pizzaY));
-            //}
-            //if (ingredientUsed["Chicken"] == true)
-            //{
-            //    gfx.DrawImage(Properties.Resources.chicken, new Point(pizzaX, pizzaY));
-            //}
-            //if (ingredientUsed["Jalapenos"] == true)
-            //{
-            //    gfx.DrawImage(Properties.Resources.jalapenos, new Point(pizzaX, pizzaY));
-            //}
-            //if (ingredientUsed["Mushrooms"] == true)
-            //{
-            //    gfx.DrawImage(Properties.Resources.mushroom, new Point(pizzaX, pizzaY));
-            //}
-            //if (ingredientUsed["Olives"] == true)
-            //{
-            //    gfx.DrawImage(Properties.Resources.olives, new Point(pizzaX, pizzaY));
-            //}
-            //if (ingredientUsed["Pepperoni"] == true)
-            //{
-            //    gfx.DrawImage(Properties.Resources.pepperoni, new Point(pizzaX, pizzaY));
-            //}
-            //mainPictureBox.Image = canvas;
+            }
+            if (foodImage != null)
+            {
+                Image newImage = Image.FromFile(foodImage);
+            }
+            CustomerLabel.Text = customers.First().PrintOrder();
+       
         }
 
+        private void CookServeDelicious_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

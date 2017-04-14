@@ -60,6 +60,12 @@
     <Compile Include="FoodKey.Designer.cs">
       <DependentUpon>FoodKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="FoodMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FoodMenu.Designer.cs">
+      <DependentUpon>FoodMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FoodKey.resx">
       <DependentUpon>FoodKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FoodMenu.resx">
+      <DependentUpon>FoodMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -82,6 +91,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Food.csv" />
+    <None Include="Names.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -130,6 +140,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\tomatoSauce.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tumblr_m7q8i1Yjuq1qje0q4o1_500.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tumblr_m7q8i1Yjuq1qje0q4o1_500.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
