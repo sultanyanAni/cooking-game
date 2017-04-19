@@ -12,9 +12,9 @@ namespace AniCookServe
     {
 
         string[] recipes = File.ReadAllLines("Food.csv");
-        Dictionary<string, List<Recipe>> foods; 
-       // public string FoodName;
- 
+        Dictionary<string, List<Recipe>> foods;
+        // public string FoodName;
+        public Dictionary<Keys, string> foodKeys;
         public Recipe ActiveRecipe;
 
         string activeFood;
@@ -25,8 +25,8 @@ namespace AniCookServe
         public Food()
         {
             foods = new Dictionary<string, List<Recipe>>();
-           // recipes = 
-
+            foodKeys = new Dictionary<Keys, string>();
+           
             //loops through each recipe so it can be added to foods
             for (int i = 1; i < recipes.Length; i++)
             {
@@ -48,7 +48,7 @@ namespace AniCookServe
 
                 var currentRecipe = new Recipe() { Name = recipeName };
 
-                for(int j = 2; j < data.Length; j += 3)
+                for (int j = 2; j < data.Length; j += 3)
                 {
                     currentRecipe.Add(new Recipe.Ingredient() { Name = data[j], Key = (Keys)Enum.Parse(typeof(Keys), data[j + 1]), Image = data[j + 2] });
                 }
@@ -57,30 +57,49 @@ namespace AniCookServe
 
             }
         }
+        public Dictionary<Keys,string> FoodKeys(string food)
+        {
+            for (int i = 1; i < recipes.Length; i++)
+            {
+                string[] data = recipes[i].Split(',');
 
+                for (int j = 3; j < data.Length; j += 3)
+                {
+                    if (!foodKeys.ContainsKey((Keys)Enum.Parse(typeof(Keys), data[j])))
+                    {
+                        foodKeys.Add((Keys)Enum.Parse(typeof(Keys), data[j]), data[j - 1]);
+                    }
+                }
+
+            }
+
+            return foodKeys;
+
+        }
         public void selectFood(string foodName)
         {
             activeFood = foodName;
             ActiveRecipe = SelectRecipe(activeFood);
         }
- 
+
         //Selects a random recipe from a given food
         private Recipe SelectRecipe(string foodName)
         {
+          
             //loop through foods and save recipes associated with activeFood into an array
-           List<Recipe> activeFoodRecipes = new List<Recipe>(); 
+            List<Recipe> activeFoodRecipes = new List<Recipe>();
             for (int i = 0; i < foods.Count; i++)
             {
-                if(foods.ContainsKey(foodName))
+                if (foods.ContainsKey(foodName))
                 {
-                    for(int j = 0; j < foods[foodName].Count; j++)
+                    for (int j = 0; j < foods[foodName].Count; j++)
                     {
                         activeFoodRecipes.Add(foods[foodName][j]);
                     }
                 }
             }
 
-            UniqueRandomNumber uniqueNum = new UniqueRandomNumber (activeFoodRecipes.Count);
+            UniqueRandomNumber uniqueNum = new UniqueRandomNumber(activeFoodRecipes.Count);
             int recipeIndex = uniqueNum.Next(0, activeFoodRecipes.Count);
             ActiveRecipe = activeFoodRecipes[recipeIndex];
             return ActiveRecipe;
@@ -89,7 +108,7 @@ namespace AniCookServe
 
         public string PrintRecipe()
         {
-            
+           
             string output = "";
             for (int i = 0; i < ActiveRecipe.Count; i++)
             {

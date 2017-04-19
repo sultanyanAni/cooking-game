@@ -16,9 +16,9 @@ namespace AniCookServe
         {
             InitializeComponent();
         }
-        public void Init(string key, string ingredient)
+        public void Init(Keys key, string ingredient)
         {
-            foodKeyLabel.Text = key;
+            foodKeyLabel.Text = key.ToString();
             ingredientLabel.Text = ingredient;
         }
 

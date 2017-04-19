@@ -11,7 +11,7 @@ namespace AniCookServe
     {
         public string Name;
         public string DesiredFood;
-        Food food;
+        public Food food;
 
         string[] names= File.ReadAllLines("Names.csv");
 

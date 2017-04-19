@@ -183,16 +183,6 @@ namespace AniCookServe.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tumblr_m7q8i1Yjuq1qje0q4o1_500 {
-            get {
-                object obj = ResourceManager.GetObject("tumblr_m7q8i1Yjuq1qje0q4o1_500", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap tumblr_m7q8i1Yjuq1qje0q4o1_5001 {
             get {
                 object obj = ResourceManager.GetObject("tumblr_m7q8i1Yjuq1qje0q4o1_5001", resourceCulture);
