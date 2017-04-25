@@ -91,6 +91,7 @@ namespace AniCookServe
                 if (e.KeyCode == ingredient.Key)
                 {
                     foodImage = ingredient.Image;
+               
                 }
                 if(e.KeyCode == Keys.Enter)
                 {
@@ -122,7 +123,7 @@ namespace AniCookServe
 
             
             CustomerLabel.Text = customers.First().PrintOrder();
-       
+            mainPictureBox.Image = canvas;
         }
 
     }

@@ -13,6 +13,7 @@ namespace AniCookServe
         public string DesiredFood;
         public Food food;
 
+
         string[] names= File.ReadAllLines("Names.csv");
 
         //patience level to be added
@@ -20,7 +21,7 @@ namespace AniCookServe
         {
             food = new Food();
             DesiredFood = activeFood;
-            food.selectFood(DesiredFood);
+            food.selectFoodAndRecipe(DesiredFood);
 
             Name = selectName();           
         }

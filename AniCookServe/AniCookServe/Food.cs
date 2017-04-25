@@ -14,7 +14,8 @@ namespace AniCookServe
         string[] recipes = File.ReadAllLines("Food.csv");
         Dictionary<string, List<Recipe>> foods;
         // public string FoodName;
-        public Dictionary<Keys, string> foodKeys;
+        private Dictionary<Keys, string> foodKeys;
+        List<Recipe.Ingredient> allIngredients;
         public Recipe ActiveRecipe;
 
         string activeFood;
@@ -26,6 +27,7 @@ namespace AniCookServe
         {
             foods = new Dictionary<string, List<Recipe>>();
             foodKeys = new Dictionary<Keys, string>();
+            allIngredients = new List<Recipe.Ingredient>(); 
            
             //loops through each recipe so it can be added to foods
             for (int i = 1; i < recipes.Length; i++)
@@ -57,6 +59,10 @@ namespace AniCookServe
 
             }
         }
+        //public List<Recipe.Ingredient> GetFoodIngredients(string food)
+        //{
+
+        //}
         public Dictionary<Keys,string> FoodKeys(string food)
         {
             for (int i = 1; i < recipes.Length; i++)
@@ -76,14 +82,14 @@ namespace AniCookServe
             return foodKeys;
 
         }
-        public void selectFood(string foodName)
+        public void selectFoodAndRecipe(string foodName)
         {
             activeFood = foodName;
-            ActiveRecipe = SelectRecipe(activeFood);
+            ActiveRecipe = SelectRandomRecipe(activeFood);
         }
 
         //Selects a random recipe from a given food
-        private Recipe SelectRecipe(string foodName)
+        private Recipe SelectRandomRecipe(string foodName)
         {
           
             //loop through foods and save recipes associated with activeFood into an array
@@ -108,7 +114,8 @@ namespace AniCookServe
 
         public string PrintRecipe()
         {
-           
+            
+
             string output = "";
             for (int i = 0; i < ActiveRecipe.Count; i++)
             {
