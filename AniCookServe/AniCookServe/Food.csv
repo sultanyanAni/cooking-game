@@ -3,7 +3,7 @@ Pizza,Mushroom,Tomato Sauce,T,Resources\tomatoSauce.png,Mushrooms,M,Resources\mu
 Pizza,Jalapeno Bacon,Tomato Sauce,T,Resources\tomatoSauce.png,Jalapenos,J,Resources\jalapenos.png,Pepperoni,P,Resources\pepperoni.png,Cheese,C,Resources\cheese.png,Bacon,B,Resources\bacon.png
 Pizza,Chicken Alfredo, Alfredo Sauce, A,Resources\alfredoSauce.png, Cheese, C,Resources\cheese.png, Chicken, K,Resources\chicken.png
 Pizza, Pepperoni, Tomato Sauce, T,Resources\tomatoSauce.png, Cheese, C,Resources\cheese.png, Pepperoni, P,Resources\pepperoni.png
-Pizza, Barbeque Chicken, Barbeque Sauce, B,Resources\bbqSauce.png, Cheese, C,Resources\cheese.png, Chicken, K,Resources\chicken.png
+Pizza, Barbeque Chicken, Barbeque Sauce,Q,Resources\bbqSauce.png, Cheese, C,Resources\cheese.png, Chicken, K,Resources\chicken.png
 Pizza, Meaty, Tomato Sauce, T,Resources\tomatoSauce.png, Cheese, C,Resources\cheese.png, Pepperoni, P,Resources\pepperoni.png, Bacon, B,Resources\bacon.png, Chicken, K,Resources\chicken.png
 Pizza, Veggie, Tomato Sauce, T,Resources\tomatoSauce.png, Cheese, C,Resources\cheese.png, Mushrooms, M,Resources\mushroom.png, Olives, O,Resources\olives.png, Jalapenos, J,Resources\jalapenos.png
 Pizza, Deluxe, Tomato Sauce, T,Resources\tomatoSauce.png, Cheese, C,Resources\cheese.png, Pepperoni, P,Resources\pepperoni.png, Bacon, B,Resources\bacon.png, Chicken, K,Resources\chicken.png, Mushrooms, M,Resources\mushroom.png, Olives, O,Resources\olives.png, Jalapenos, J,Resources\jalapenos.png

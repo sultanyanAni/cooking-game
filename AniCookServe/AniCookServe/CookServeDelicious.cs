@@ -18,6 +18,7 @@ namespace AniCookServe
         Graphics gfx;
         Queue<Customer> customers;
         Food food = new Food();
+        List<string> usedIngredients;
         string activeFood;
         int x;
         int y;
@@ -25,8 +26,8 @@ namespace AniCookServe
         int foodY;
 
         string foodImage;
-        
-        
+
+
 
         /// <summary>
         /// creates and returns a new FoodKey and places it at a specified location
@@ -44,11 +45,9 @@ namespace AniCookServe
 
             return keyToCreate;
         }
-
-  
-       
         void init()
         {
+            usedIngredients = new List<string>();
             customers = new Queue<Customer>();
             canvas = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
             gfx = Graphics.FromImage(canvas);
@@ -57,9 +56,6 @@ namespace AniCookServe
             y = 0;
             foodX = ClientSize.Width / 5;
             foodY = 40;
-
-        
-            
         }
         public CookServeDelicious(string foodName)
         {
@@ -67,33 +63,31 @@ namespace AniCookServe
             init();
             this.KeyDown += CookServeDelicious_KeyDown;
             activeFood = foodName;
-            customers.Enqueue(new Customer(activeFood) );
+            customers.Enqueue(new Customer(activeFood));
         }
         private void CookServeDelicious_Load(object sender, EventArgs e)
         {
-            
 
+            gfx.DrawImage(Image.FromFile("Resources\\pizzaDough.png"), new Point(foodX, foodY));
             for (int i = 0; i < customers.First().food.FoodKeys(activeFood).Count; i++)
             {
                 Keys keyIndex = customers.First().food.FoodKeys(activeFood).ToList()[i].Key;
-                FoodKey newFoodKey = createNewFoodKey(keyIndex, customers.First().food.FoodKeys(activeFood)[keyIndex], new Point(x,y));
+                FoodKey newFoodKey = createNewFoodKey(keyIndex, customers.First().food.FoodKeys(activeFood)[keyIndex], new Point(x, y));
 
                 Controls.Add(newFoodKey);
                 y += newFoodKey.Height;
             }
-            
         }
 
         private void CookServeDelicious_KeyDown(object sender, KeyEventArgs e)
         {
-            foreach(var ingredient in customers.First().food.ActiveRecipe)
+            foreach (var ingredient in customers.First().food.GetFoodIngredients(activeFood))
             {
                 if (e.KeyCode == ingredient.Key)
                 {
                     foodImage = ingredient.Image;
-               
                 }
-                if(e.KeyCode == Keys.Enter)
+                if (e.KeyCode == Keys.Enter)
                 {
                     submitOrder();
                     break;
@@ -101,12 +95,12 @@ namespace AniCookServe
             }
 
 
-          
+
         }
 
         private void submitOrder()
         {
-            
+
         }
         Image newImage;
         private void timer1_Tick(object sender, EventArgs e)
@@ -115,13 +109,15 @@ namespace AniCookServe
             {
                 customers.Enqueue(new Customer(activeFood));
             }
-            if (foodImage != null)
+
+            if (foodImage != null && !usedIngredients.Contains(foodImage))
             {
                 newImage = Image.FromFile(foodImage);
                 gfx.DrawImage(newImage, new Point(foodX, foodY));
+                usedIngredients.Add(foodImage);
             }
 
-            
+
             CustomerLabel.Text = customers.First().PrintOrder();
             mainPictureBox.Image = canvas;
         }

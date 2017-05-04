@@ -59,10 +59,21 @@ namespace AniCookServe
 
             }
         }
-        //public List<Recipe.Ingredient> GetFoodIngredients(string food)
-        //{
+        public List<Recipe.Ingredient> GetFoodIngredients(string food)
+        {
+            for (int i = 1; i < recipes.Length; i++)
+            {
+    
+                string[] data = recipes[i].Split(',');
+                for (int j = 2; j < data.Length; j += 3)
+                {
+                    allIngredients.Add(new Recipe.Ingredient() { Name = data[j], Key = (Keys)Enum.Parse(typeof(Keys), data[j + 1]), Image = data[j + 2] });
+                }
 
-        //}
+            }
+            
+            return allIngredients;
+        }
         public Dictionary<Keys,string> FoodKeys(string food)
         {
             for (int i = 1; i < recipes.Length; i++)
