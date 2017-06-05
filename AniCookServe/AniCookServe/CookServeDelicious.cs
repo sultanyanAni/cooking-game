@@ -18,15 +18,17 @@ namespace AniCookServe
         Graphics gfx;
         Queue<Customer> customers;
         Food food = new Food();
-        List<string> usedIngredients;
+        List<FoodKey> foodKeys;
+        List<Recipe.Ingredient> usedIngredients;
+        LayerControl layers;
         string activeFood;
         int x;
         int y;
         int foodX;
         int foodY;
-
+        Customer currentCustomer;
         string foodImage;
-
+        Recipe.Ingredient currentIngredient;
 
 
         /// <summary>
@@ -36,7 +38,7 @@ namespace AniCookServe
         /// <param name="ingredient">ingredient that will be printed in the FoodKey</param>
         /// <param name="location">point that the FoodKey will be located at</param>
         /// <returns></returns>
-        FoodKey createNewFoodKey(Keys key, string ingredient, Point location)
+        FoodKey addNewFoodKey(Keys key, string ingredient, Point location)
         {
             FoodKey keyToCreate;
             keyToCreate = new FoodKey();
@@ -47,7 +49,9 @@ namespace AniCookServe
         }
         void init()
         {
-            usedIngredients = new List<string>();
+            foodKeys = new List<FoodKey>();
+            layers = new LayerControl();
+            usedIngredients = new List<Recipe.Ingredient>();
             customers = new Queue<Customer>();
             canvas = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
             gfx = Graphics.FromImage(canvas);
@@ -64,28 +68,38 @@ namespace AniCookServe
             this.KeyDown += CookServeDelicious_KeyDown;
             activeFood = foodName;
             customers.Enqueue(new Customer(activeFood));
+            currentCustomer = customers.First();
         }
         private void CookServeDelicious_Load(object sender, EventArgs e)
         {
 
             gfx.DrawImage(Image.FromFile("Resources\\pizzaDough.png"), new Point(foodX, foodY));
-            for (int i = 0; i < customers.First().food.FoodKeys(activeFood).Count; i++)
+            for (int i = 0; i < currentCustomer.food.FoodKeys(activeFood).Count; i++)
             {
-                Keys keyIndex = customers.First().food.FoodKeys(activeFood).ToList()[i].Key;
-                FoodKey newFoodKey = createNewFoodKey(keyIndex, customers.First().food.FoodKeys(activeFood)[keyIndex], new Point(x, y));
+                Keys keyIndex = currentCustomer.food.FoodKeys(activeFood).ToList()[i].Key;
+                FoodKey newFoodKey = addNewFoodKey(keyIndex, currentCustomer.food.FoodKeys(activeFood)[keyIndex], new Point(x, y));
 
                 Controls.Add(newFoodKey);
+                foodKeys.Add(newFoodKey);
                 y += newFoodKey.Height;
             }
         }
 
+     
         private void CookServeDelicious_KeyDown(object sender, KeyEventArgs e)
         {
-            foreach (var ingredient in customers.First().food.GetFoodIngredients(activeFood))
+            foreach (var ingredient in currentCustomer.food.GetFoodIngredients(activeFood))
             {
                 if (e.KeyCode == ingredient.Key)
                 {
-                    foodImage = ingredient.Image;
+                    layers.Add(ingredient);
+                    foreach(var foodKey in foodKeys)
+                    {
+                       if(foodKey.key == ingredient.Key.ToString())
+                        {
+                            foodKey.deactivateKey();
+                        }
+                    }
                 }
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -102,7 +116,7 @@ namespace AniCookServe
         {
 
         }
-        Image newImage;
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (customers.Count < 4)
@@ -110,12 +124,8 @@ namespace AniCookServe
                 customers.Enqueue(new Customer(activeFood));
             }
 
-            if (foodImage != null && !usedIngredients.Contains(foodImage))
-            {
-                newImage = Image.FromFile(foodImage);
-                gfx.DrawImage(newImage, new Point(foodX, foodY));
-                usedIngredients.Add(foodImage);
-            }
+
+            layers.Draw(gfx, new Point(foodX, foodY));
 
 
             CustomerLabel.Text = customers.First().PrintOrder();

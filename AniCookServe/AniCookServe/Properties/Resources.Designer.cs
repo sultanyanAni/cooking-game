@@ -113,6 +113,16 @@ namespace AniCookServe.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap deactivatedFoodKeyBackground {
+            get {
+                object obj = ResourceManager.GetObject("deactivatedFoodKeyBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap foodKeyBackground {
             get {
                 object obj = ResourceManager.GetObject("foodKeyBackground", resourceCulture);

@@ -50,27 +50,35 @@ namespace AniCookServe
 
                 var currentRecipe = new Recipe() { Name = recipeName };
 
-                for (int j = 2; j < data.Length; j += 3)
+                for (int j = 3; j < data.Length; j += 4)
                 {
-                    currentRecipe.Add(new Recipe.Ingredient() { Name = data[j], Key = (Keys)Enum.Parse(typeof(Keys), data[j + 1]), Image = data[j + 2] });
+                    currentRecipe.Add(new Recipe.Ingredient() {Layer = int.Parse(data[j-1]), Name = data[j], Key = (Keys)Enum.Parse(typeof(Keys), data[j + 1]), Image = data[j + 2] });
                 }
 
                 foods[foodName].Add(currentRecipe);
 
             }
         }
-        public List<Recipe.Ingredient> GetFoodIngredients(string food)
+
+        private void LoadFoodIngredients(string food)
         {
             for (int i = 1; i < recipes.Length; i++)
             {
-    
                 string[] data = recipes[i].Split(',');
-                for (int j = 2; j < data.Length; j += 3)
+
+                for (int j = 3; j < data.Length; j += 4)
                 {
-                    allIngredients.Add(new Recipe.Ingredient() { Name = data[j], Key = (Keys)Enum.Parse(typeof(Keys), data[j + 1]), Image = data[j + 2] });
+                    Recipe.Ingredient newIngredient = new Recipe.Ingredient() { Layer = int.Parse(data[j - 1]), Name = data[j], Key = (Keys)Enum.Parse(typeof(Keys), data[j + 1]), Image = data[j + 2] };
+                    if (!allIngredients.Contains(newIngredient))
+                    {
+                      allIngredients.Add(newIngredient);
+                    }
                 }
 
             }
+        }
+        public List<Recipe.Ingredient> GetFoodIngredients(string food)
+        {
             
             return allIngredients;
         }
@@ -80,7 +88,7 @@ namespace AniCookServe
             {
                 string[] data = recipes[i].Split(',');
 
-                for (int j = 3; j < data.Length; j += 3)
+                for (int j = 4; j < data.Length; j += 4)
                 {
                     if (!foodKeys.ContainsKey((Keys)Enum.Parse(typeof(Keys), data[j])))
                     {
@@ -97,6 +105,7 @@ namespace AniCookServe
         {
             activeFood = foodName;
             ActiveRecipe = SelectRandomRecipe(activeFood);
+            LoadFoodIngredients(activeFood);
         }
 
         //Selects a random recipe from a given food

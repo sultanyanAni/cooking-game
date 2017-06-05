@@ -67,6 +67,7 @@
       <DependentUpon>FoodMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
+    <Compile Include="LayerControl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recipe.cs" />
@@ -171,6 +172,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\tumblr_m7q8i1Yjuq1qje0q4o1_500.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deactivatedFoodKeyBackground.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
